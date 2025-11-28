@@ -1,3 +1,9 @@
+/*
+  TIM2控制閃爍燈
+*/
+
+
+
 #include "stm32f4xx_hal.h"
 #include "gpio.h"
 #include "button.h"
@@ -35,12 +41,12 @@ int main(void)
              
              if(pin == GPIO_PIN_SET)
              {
-                btn_press_event = 1; //�������U�ƥ�
+                btn_press_event = 1; //紀錄按下事件
              }
              else
              {
                
-               btn_release_event = 1; //�O����}�ƥ�
+               btn_release_event = 1; //記錄放開事件
              }           
          }        
       }
@@ -51,7 +57,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
     if (htim->Instance == TIM2)
     {
-        // �C�@��½�� LED
+        // 每一秒翻轉 LED
         HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
     }
 }
+
