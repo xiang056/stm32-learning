@@ -1,3 +1,10 @@
+/*
+    短/長按鍵模式
+    短按:LED變換模擬短按mode中的各類功能
+    長按:LED齊亮模擬長按mode功能
+*/
+
+
 #include "stm32f4xx_hal.h"
 #include "gpio.h"
 #include "button.h"
@@ -133,3 +140,4 @@ int main(void)
         
      
       }
+
