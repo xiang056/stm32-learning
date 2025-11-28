@@ -8,11 +8,11 @@ void Button_Init(void);
 
 
 
-volatile uint8_t btn_press_event = 0; //«ö¤U¨Æ¥ó
-volatile uint8_t btn_release_event = 0; //©ñ¶}¨Æ¥ó
+volatile uint8_t btn_press_event = 0; //æŒ‰ä¸‹äº‹ä»¶
+volatile uint8_t btn_release_event = 0; //æ”¾é–‹äº‹ä»¶
 volatile uint8_t state = 0;
-volatile uint32_t press_time = 0;//¬ö¿ý«ö¤U®É¶¡
-volatile uint32_t release_time = 0;//¬ö¿ýÃP¶}®É¶¡
+volatile uint32_t press_time = 0;//ç´€éŒ„æŒ‰ä¸‹æ™‚é–“
+volatile uint32_t release_time = 0;//ç´€éŒ„é¬†é–‹æ™‚é–“
 int main(void)
 {
     HAL_Init();
@@ -45,7 +45,7 @@ int main(void)
          
          if(duration < 500)
          {
-              //µu«öevent
+              //çŸ­æŒ‰event
 
              HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
              HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
@@ -98,7 +98,7 @@ int main(void)
          }
          else
          {
-              //ªø«öevent
+              //é•·æŒ‰event
               HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
               HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_SET);
               HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_SET);
@@ -120,12 +120,12 @@ int main(void)
              
              if(pin == GPIO_PIN_SET)
              {
-                btn_press_event = 1; //¬ö¿ý«ö¤U¨Æ¥ó
+                btn_press_event = 1; //ç´€éŒ„æŒ‰ä¸‹äº‹ä»¶
              }
              else
              {
                
-               btn_release_event = 1; //°O¿ý©ñ¶}¨Æ¥ó
+               btn_release_event = 1; //è¨˜éŒ„æ”¾é–‹äº‹ä»¶
              }
            
          }
