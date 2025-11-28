@@ -1,3 +1,6 @@
+/*
+    以燈當作狀態0~3，分別為狀態1/2/3/4，並用EXTI中斷不占用CPU
+*/
 #include "stm32f4xx_hal.h"
 #include "gpio.h"
 #include "button.h"
@@ -8,8 +11,8 @@ void Button_Init(void);
 
 
 
-volatile uint8_t btn_event = 0;    //�ƥ�flag
-uint32_t last_press_time = 0;      //�W�����U�ɶ�
+volatile uint8_t btn_event = 0;    //¨Æ¥óflag
+uint32_t last_press_time = 0;      //¤W¦¸«ö¤U®É¶¡
 uint8_t state = 0;
 
 int main(void)
@@ -87,4 +90,5 @@ int main(void)
         
         
      
+
       }
