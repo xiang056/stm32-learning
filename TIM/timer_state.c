@@ -1,14 +1,14 @@
 /*
-## ¥\¯à¯SÂI
+## åŠŸèƒ½ç‰¹é»
 
-- ?? **¦h¥ô°È½Õ«×**¡G1ms/10ms/100ms ¤T¯Å®É¶¡¤ù¥ô°È
-- ?? **«ö¶s¨¾§İ°Ê**¡G20ms µwÅé¨¾§İ°Êºtºâªk
-- ?? **ª¬ºA¾÷±±¨î**¡G¤TºA´`Àô¤Á´« (IDLE ¡÷ RUN ¡÷ STOP)
-- ?? **LED ª¬ºA«ü¥Ü**¡G
-  - PD12: 100ms ¤ß¸õ¿O
-  - PD13: IDLE ª¬ºA«ü¥Ü  
-  - PD14: RUN ª¬ºA«ü¥Ü
-  - PD15: STOP ª¬ºA«ü¥Ü
+-  **å¤šä»»å‹™èª¿åº¦**ï¼š1ms/10ms/100ms ä¸‰ç´šæ™‚é–“ç‰‡ä»»å‹™
+-  **æŒ‰éˆ•é˜²æŠ–å‹•**ï¼š20ms ç¡¬é«”é˜²æŠ–å‹•æ¼”ç®—æ³•
+-  **ç‹€æ…‹æ©Ÿæ§åˆ¶**ï¼šä¸‰æ…‹å¾ªç’°åˆ‡æ› (IDLE â†’ RUN â†’ STOP)
+-  **LED ç‹€æ…‹æŒ‡ç¤º**ï¼š
+  - PD12: 100ms å¿ƒè·³ç‡ˆ
+  - PD13: IDLE ç‹€æ…‹æŒ‡ç¤º  
+  - PD14: RUN ç‹€æ…‹æŒ‡ç¤º
+  - PD15: STOP ç‹€æ…‹æŒ‡ç¤º
 
 */
 
@@ -39,22 +39,22 @@ void Task_1ms(void)
 {
     uint8_t raw = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
     
-    if(raw == GPIO_PIN_RESET)  //«ö¤U
+    if(raw == GPIO_PIN_RESET)  //æŒ‰ä¸‹
     {
-        if(key_counter < 20 )    //§İ°Ê20ms
+        if(key_counter < 20 )    //æŠ–å‹•20ms
           key_counter++;
         
         if(key_counter >= 20 )
-          key_state= 1;               //½T»{«ö¤U
+          key_state= 1;               //ç¢ºèªæŒ‰ä¸‹
     }
     
-    else                          //©ñ¶}
+    else                          //æ”¾é–‹
     {
         if(key_counter > 0)      
           key_counter--;
         
         if(key_counter == 0)
-          key_state = 0;               //½T»{©ñ¶}
+          key_state = 0;               //ç¢ºèªæ”¾é–‹
       
     }
 }
@@ -143,21 +143,21 @@ int main(void)
 
     while (1)
     {
-        //¥ô°ÈA ¨C1ms
+        //ä»»å‹™A æ¯1ms
         if(flag_1ms)
         {
           flag_1ms = 0;  
           Task_1ms();
         }                    
         
-        // ¥ô°ÈB ¨C10ms
+        // ä»»å‹™B æ¯10ms
         if(flag_10ms)
         {
           flag_10ms = 0;  
           Task_10ms();
         }
         
-        //¥ô°ÈC ¨C100ms
+        //ä»»å‹™C æ¯100ms
         if(flag_100ms)
         {
           flag_100ms = 0;  
@@ -194,3 +194,4 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         }
     }  
 }
+
